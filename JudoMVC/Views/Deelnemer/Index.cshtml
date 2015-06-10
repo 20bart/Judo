@@ -1,0 +1,9 @@
+﻿@using Resource = MyResources.Deelnemer.Resource
+
+@{
+    ViewBag.Title = Resource.Participants;
+}
+
+<h2>@Resource.Participants</h2>
+
+@Html.ActionLink(Resource.ManageParticipants, "DeelnemersBeheren", "Deelnemer", new { @class = "btn btn-default" })

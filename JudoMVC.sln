@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JudoMVC", "JudoMVC\JudoMVC.csproj", "{9944A0D6-FE58-4E6F-8F0F-A42CEA9D2695}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JudoModelsLibrary", "JudoModelsLibrary\JudoModelsLibrary.csproj", "{C27CBC09-C41A-4CF9-853C-07A9B922EA29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JudoServiceLibrary", "JudoServiceLibrary\JudoServiceLibrary.csproj", "{57BCE9FD-D253-46BC-8820-9D6446BF8AEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyResources", "MyResources\MyResources.csproj", "{0DB74D65-CEB2-4EFE-9823-A183533E0B32}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9944A0D6-FE58-4E6F-8F0F-A42CEA9D2695}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9944A0D6-FE58-4E6F-8F0F-A42CEA9D2695}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9944A0D6-FE58-4E6F-8F0F-A42CEA9D2695}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9944A0D6-FE58-4E6F-8F0F-A42CEA9D2695}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C27CBC09-C41A-4CF9-853C-07A9B922EA29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C27CBC09-C41A-4CF9-853C-07A9B922EA29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C27CBC09-C41A-4CF9-853C-07A9B922EA29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C27CBC09-C41A-4CF9-853C-07A9B922EA29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57BCE9FD-D253-46BC-8820-9D6446BF8AEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57BCE9FD-D253-46BC-8820-9D6446BF8AEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57BCE9FD-D253-46BC-8820-9D6446BF8AEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57BCE9FD-D253-46BC-8820-9D6446BF8AEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DB74D65-CEB2-4EFE-9823-A183533E0B32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DB74D65-CEB2-4EFE-9823-A183533E0B32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DB74D65-CEB2-4EFE-9823-A183533E0B32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DB74D65-CEB2-4EFE-9823-A183533E0B32}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

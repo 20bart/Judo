@@ -1,0 +1,31 @@
+﻿<ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" id="dropdownLanguage" data-toggle="dropdown" aria-expanded="True">
+            Language
+            <span class="caret"></span>
+        </a>
+
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownLanguage">
+            <li role="presentation">
+                <a role="menuitem" href="@Url.Action("SetCulture", "Home", new { culture = "en" })">
+                    English
+                </a>
+            </li>
+            <li role="presentation">
+                <a role="menuitem" href="@Url.Action("SetCulture", "Home", new { culture = "fr" })">
+                    Français
+                </a>
+            </li>
+            <li role="presentation">
+                <a role="menuitem" href="@Url.Action("SetCulture", "Home", new { culture = "nl" })">
+                    Nederlands
+                </a>
+            </li>
+            <li role="presentation">
+                <a role="menuitem" href="@Url.Action("SetCulture", "Home", new { culture = "de" })">
+                    Deutsch
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
