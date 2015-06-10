@@ -1,0 +1,18 @@
+﻿@using JudoModelsLibrary
+@using Resource = MyResources.Deelnemer.Resource
+
+@if (ViewBag.Deelnemers != null)
+{
+    var deelnemers = (List<Deelnemer>) ViewBag.Deelnemers;
+    <div class="list-group">
+        @foreach (var deelnemer in deelnemers)
+        {
+            <div class="list-group-item">
+                <h4 class="list-group-item-heading">@deelnemer.Voornaam @deelnemer.Familienaam</h4>
+                <a href="@Url.Action("DeelnemersBeheren", "Deelnemer", new { id = deelnemer.DeelnemersId, todo = "delete" })" class="badge">@Resource.Delete</a>
+                <a href="@Url.Action("DeelnemersBeheren", "Deelnemer", new { id = deelnemer.DeelnemersId, todo = "edit" })" id="editDeelnemer" class="badge">@Resource.Edit</a>
+                <p class="list-group-item-text">@deelnemer.GeboorteJaar @deelnemer.Geslacht</p>
+            </div>
+        }
+    </div>
+}

@@ -1,0 +1,34 @@
+﻿@using Resource = MyResources.Shared.Resource
+@if (ViewBag.ChangesSaved != null)
+{
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @if (ViewBag.ChangesSaved)
+                {
+                    <div class="alert alert-success" role="alert">
+                        @Resource.YourChangesHaveBeenSaved
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @Resource.SomethingWentWrong
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+@if (ViewBag.NothingChanged != null && ViewBag.NothingChanged)
+{
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="alert alert-info" role="alert">
+                    @Resource.NothingChanged
+                </div>
+            </div>
+        </div>
+    </div>
+}

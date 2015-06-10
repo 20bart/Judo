@@ -1,0 +1,78 @@
+﻿@using Resource = MyResources.Deelnemer.Resource
+@model JudoMVC.Models.DeelnemerViewModel
+
+@{
+    ViewBag.Title = Resource.ManageParticipants;
+}
+
+<h2>@Resource.ManageParticipants</h2>
+
+@using (Html.BeginForm("DeelnemersBeheren", "Deelnemer", FormMethod.Post, new { role = "form" }))
+{
+    <h4>@Resource.CreateNewParticipant</h4>
+    <hr />
+
+
+    <div class="col-md-6">
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Voornaam, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Voornaam, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Voornaam), autofocus = "autofocus" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Familienaam, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Familienaam, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Familienaam) })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Geslacht, new { @class = "control-label" })
+                    @Html.EnumDropDownListFor(m => m.Geslacht, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Geslacht) })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.GeboorteJaar, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.GeboorteJaar, "", new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.GeboorteJaar) })
+                </div>
+            </div>
+        </div>
+        @Html.HiddenFor(m => m.ClubId)
+        @Html.HiddenFor(m => m.DeelnemerId)
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @if (ViewBag.todo != null && ViewBag.todo == "edit")
+                    {
+                        <input type="submit" class="btn btn-default" value="@Resource.Save" />
+                        <a class="btn btn-default" href="@Url.Action("DeelnemersBeheren", "Deelnemer")">@Resource.Cancel</a>
+                    }
+                    else
+                    {
+                        <input type="submit" class="btn btn-default" value="@Resource.Add" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        @Html.Partial("_DeelnemersLijstPartial")
+    </div>
+
+}
+<div class="clearfix"></div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
