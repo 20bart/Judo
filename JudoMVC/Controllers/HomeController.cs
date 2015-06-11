@@ -12,7 +12,6 @@ namespace JudoMVC.Controllers
         {
             //System.Data.Entity.Database.SetInitializer(new DropCreateDatabaseIfModelChanges<JudoContext>());
             //System.Data.Entity.Database.SetInitializer(new DropCreateDatabaseAlways<JudoContext>());
-
             return View();
         }
 
