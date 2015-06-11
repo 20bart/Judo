@@ -121,19 +121,19 @@
     <value>Een email voor bevestiging is verzonden naar</value>
   </data>
   <data name="CheckEmailText" xml:space="preserve">
-    <value>Controleer je email en bevestig je account, je moet bevestigd hebben voor je kan inloggen.</value>
+    <value>Controleer uw email en bevestig uw account, u moet bevestigd hebben voor u kan inloggen.</value>
   </data>
   <data name="ConfirmAccountResend" xml:space="preserve">
-    <value>Confirm your account-Resend</value>
+    <value>Bevestig uw account-Resend</value>
   </data>
   <data name="ConfirmedEmailError" xml:space="preserve">
-    <value>Je hebt een bevestigd email adres nodig om in te loggen.</value>
+    <value>U hebt een bevestigd email adres nodig om in te loggen.</value>
   </data>
   <data name="ConfirmEmailTitle" xml:space="preserve">
     <value>Bevestig Email</value>
   </data>
   <data name="ConfirmYourAccount" xml:space="preserve">
-    <value>Bevestig je account</value>
+    <value>Bevestig uw account</value>
   </data>
   <data name="ConfirmYourAccountText" xml:space="preserve">
     <value>Gelieve uw account te bevestigen door</value>
