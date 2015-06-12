@@ -1,15 +1,21 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/bootswatch")
+    @Styles.Render("~/Content/index")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body id="home">
-<div class="navbar navbar-inverse navbar-fixed-top">
+@{ var transparency = "";}
+@if (ViewBag.Title == MyResources.Home.Resource.HomePage)
+{
+    transparency = "navbar-transparent";
+}
+<div class="navbar navbar-inverse navbar-fixed-top @transparency">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -30,20 +36,20 @@
         </div>
     </div>
 </div>
-        @if (ViewBag.Title == MyResources.Home.Resource.HomePage)
-        {
-            <img class="splash img img-responsive" src="~/Content/images/IMG_3916.JPG" alt="groepsfoto" />
-        }
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Judo Tournaments Application</p>
-        </footer>
-    </div>
+@if (ViewBag.Title == MyResources.Home.Resource.HomePage)
+{
+    <img class="splash img img-responsive" src="~/Content/images/IMG_3916.JPG" alt="groepsfoto"/>
+}
+<div class="container body-content">
+    @RenderBody()
+    <hr/>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Judo Tournaments Application</p>
+    </footer>
+</div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
 </body>
 </html>

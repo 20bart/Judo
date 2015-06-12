@@ -25,14 +25,14 @@ namespace JudoMVC
             bundles.Add(new ScriptBundle("~/bundles/custom").Include(
                         "~/Scripts/custom.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootswatch").Include(
-                        "~/Scripts/bootswatch.js"));
+            bundles.Add(new ScriptBundle("~/bundles/index").Include(
+                        "~/Scripts/index.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/bootstrap.css",
                         "~/Content/Site.css"));
 
-            bundles.Add(new StyleBundle("~/Content/bootswatch").Include(
+            bundles.Add(new StyleBundle("~/Content/index").Include(
                         "~/Content/custom.min.css"));
         }
     }
