@@ -33,3 +33,6 @@ textarea {
 body>.navbar-inverse {
     border: none;
 }
+.body-content {
+    padding-top: 60px;
+}
