@@ -3,22 +3,27 @@
     ViewBag.Title = Resource.HomePage;
 }
 
-<img class="img img-responsive" src="~/Content/images/Groepsfoto.png" alt="groepsfoto" />
-
 <div class="row">
     <div class="col-md-4">
         <h2>@Resource.ManageParticipants</h2>
         <p>@Resource.ManagingParticipantsText</p>
-        <p><a class="btn btn-default" href="@Url.Action("DeelnemersBeheren", "Deelnemer")">@Resource.Participants &raquo;</a></p>
+        <p><a class="btn btn-default" href="@Url.Action("DeelnemersBeheren", "Deelnemer")">@Resource.Participants &raquo;</a>
+        </p>
     </div>
     <div class="col-md-4">
         <h2>Lorum ipsum</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel dignissim ante, ornare tristique sapien. Vestibulum eleifend sed diam non.</p>
-        <p><a class="btn btn-default" href="#">Learn more &raquo;</a></p>
+        <p><a class="btn btn-default" href="#">Learn more &raquo;</a>
+        </p>
     </div>
     <div class="col-md-4">
         <h2>Lorum ipsum</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel dignissim ante, ornare tristique sapien. Vestibulum eleifend sed diam non.</p>
-        <p><a class="btn btn-default" href="#">Learn more &raquo;</a></p>
+        <p><a class="btn btn-default" href="#">Learn more &raquo;</a>
+        </p>
     </div>
 </div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/bootswatch")

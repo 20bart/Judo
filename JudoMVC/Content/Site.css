@@ -30,3 +30,6 @@ textarea {
     color: inherit !important;
     text-decoration: none !important;
 }
+body>.navbar-inverse {
+    border: none;
+}
