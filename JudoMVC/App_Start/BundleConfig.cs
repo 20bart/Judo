@@ -7,6 +7,9 @@ namespace JudoMVC
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+
+            //=================SCRIPTS=======================================================
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -28,12 +31,30 @@ namespace JudoMVC
             bundles.Add(new ScriptBundle("~/bundles/index").Include(
                         "~/Scripts/index.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/datepicker").Include(
+                        "~/Scripts/bootstrap-datepicker.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+                "~/Scripts/jquery-ui-{version}.js",
+                "~/Scripts/jquery-ui.unobtrusive-{version}.js"));
+
+
+            //=================STYLES========================================================
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/bootstrap.css",
                         "~/Content/Site.css"));
 
+            bundles.Add(new StyleBundle("~/Content/datepicker").Include(
+                        "~/Content/datepicker.css"));
+
             bundles.Add(new StyleBundle("~/Content/index").Include(
                         "~/Content/custom.min.css"));
+
+            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
+                "~/Content/themes/base/jquery.ui.core.css",
+                "~/Content/themes/base/jquery.ui.datepicker.css",
+                "~/Content/themes/base/jquery.ui.theme.css"));
         }
     }
 }

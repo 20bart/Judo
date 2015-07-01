@@ -14,7 +14,7 @@
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     
-    <div id="club">
+    <fieldset id="club">
         <h3>@Resource.Club</h3>
         <div class="row">
             <div class="col-md-2">
@@ -74,16 +74,9 @@
                 </div>
             </div>
         </div>
-        @*<div class="row">
-            <div class="col-md-10">
-                <div class="form-group">
-                    <button id="reg_next" class="btn btn-default">Next</button>
-                </div>
-            </div>
-        </div>*@
-    </div>
+    </fieldset>
     
-    <div id="verantwoordelijke">
+    <fieldset id="verantwoordelijke">
         <h3>@Resource.Manager</h3>
         <div class="row form-group">
             <div class="col-md-10">
@@ -122,18 +115,13 @@
             </div>
         </div>
         <div class="row ">
-            @*<div class="col-md-2">
-                <div class="form-group">
-                    <button id="reg_prev" class="btn btn-default">Previous</button>
-                </div>
-            </div>*@
             <div class="col-md-2">
                 <div class="form-group">
                     <input type="submit" class="btn btn-default" value="@Resource.Register" />
                 </div>
             </div>
         </div>
-    </div>
+    </fieldset>
     
 }
 

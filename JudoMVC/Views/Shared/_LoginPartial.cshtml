@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@using JudoMVC.Services
+@using Microsoft.AspNet.Identity
 @using Resource = MyResources.Shared.Resource
 @if (Request.IsAuthenticated)
 {
@@ -8,7 +9,12 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink(Resource.Hello + " " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = Resource.Manage })
+            @{
+                //Get current club
+                var userService = new UserService();
+                var verantw = userService.GetCurrentVerantwoordelijke();
+            }
+            @Html.ActionLink(Resource.Hello + " " + verantw.Voornaam + "!", "Index", "Manage", routeValues: null, htmlAttributes: new {title = Resource.Manage})
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">@Resource.LogOff</a></li>
         

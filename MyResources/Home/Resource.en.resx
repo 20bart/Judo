@@ -132,6 +132,12 @@
   <data name="ManageParticipants" xml:space="preserve">
     <value>Manage participants</value>
   </data>
+  <data name="ManageTournaments" xml:space="preserve">
+    <value>Manage tournaments</value>
+  </data>
+  <data name="ManageTournamentsText" xml:space="preserve">
+    <value>Here you have the ability to set up the detais of your tournaments.</value>
+  </data>
   <data name="ManagingParticipantsText" xml:space="preserve">
     <value>Here you have the ability to manage the details of your participants.</value>
   </data>
@@ -140,6 +146,9 @@
   </data>
   <data name="Participants" xml:space="preserve">
     <value>Participants</value>
+  </data>
+  <data name="Tournaments" xml:space="preserve">
+    <value>Tournaments</value>
   </data>
   <data name="YourAppDescPageText" xml:space="preserve">
     <value>Your application description page.</value>

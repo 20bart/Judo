@@ -1,0 +1,8 @@
+﻿@model AssignedCategoriesViewModel
+@using JudoMVC.Models
+
+<div class="checkbox">
+    @Html.HiddenFor(m=>m.LeeftijdCategorieId)
+    @Html.CheckBoxFor(m=>m.Assigned)
+    @Html.DisplayFor(m=>m.LeeftijdCategorieNaam)
+</div>

@@ -7,6 +7,7 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/index")
+    @Styles.Render("~/Content/themes/base/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body id="home">
@@ -15,7 +16,7 @@
 {
     transparency = "navbar-transparent";
 }
-<div class="navbar navbar-inverse navbar-fixed-top @transparency">
+<nav class="navbar navbar-inverse navbar-fixed-top @transparency">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -35,10 +36,10 @@
             @Html.Partial("_LoginPartial")
         </div>
     </div>
-</div>
+</nav>
 @if (ViewBag.Title == MyResources.Home.Resource.HomePage)
 {
-    <img class="splash img img-responsive" src="~/Content/images/IMG_3916.JPG" alt="groepsfoto"/>
+    <img class="splash img img-responsive" src="~/Content/images/Groepsfoto2.JPG" alt="groepsfoto"/>
 }
 <div class="container body-content">
     @RenderBody()
@@ -50,6 +51,7 @@
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/jqueryui")
 @RenderSection("scripts", required: false)
 </body>
 </html>

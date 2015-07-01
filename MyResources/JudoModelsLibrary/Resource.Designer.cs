@@ -61,6 +61,24 @@ namespace MyResources.JudoModelsLibrary {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Leeftijd.
+        /// </summary>
+        public static string Age {
+            get {
+                return ResourceManager.GetString("Age", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Age Category.
+        /// </summary>
+        public static string AgeCategory {
+            get {
+                return ResourceManager.GetString("AgeCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Geboortejaar.
         /// </summary>
         public static string BirthYear {
@@ -115,6 +133,15 @@ namespace MyResources.JudoModelsLibrary {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Duur.
+        /// </summary>
+        public static string Duration {
+            get {
+                return ResourceManager.GetString("Duration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string Email {
@@ -156,6 +183,15 @@ namespace MyResources.JudoModelsLibrary {
         public static string Geslacht_Vrouw {
             get {
                 return ResourceManager.GetString("Geslacht_Vrouw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Individueel.
+        /// </summary>
+        public static string Individually {
+            get {
+                return ResourceManager.GetString("Individually", resourceCulture);
             }
         }
         
@@ -228,6 +264,15 @@ namespace MyResources.JudoModelsLibrary {
         public static string RegistrationDate {
             get {
                 return ResourceManager.GetString("RegistrationDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uiterste inschrijving.
+        /// </summary>
+        public static string RegistrationDeadline {
+            get {
+                return ResourceManager.GetString("RegistrationDeadline", resourceCulture);
             }
         }
         

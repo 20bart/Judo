@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Age" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="AgeCategory" xml:space="preserve">
+    <value>Leeftijdscategorie</value>
+  </data>
   <data name="BirthYear" xml:space="preserve">
     <value>BirthYear</value>
   </data>
@@ -135,6 +141,9 @@
   <data name="Date" xml:space="preserve">
     <value>Date</value>
   </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
@@ -149,6 +158,9 @@
   </data>
   <data name="Geslacht_Vrouw" xml:space="preserve">
     <value>Female</value>
+  </data>
+  <data name="Individually" xml:space="preserve">
+    <value>Individually</value>
   </data>
   <data name="LastName" xml:space="preserve">
     <value>Last name</value>
@@ -173,6 +185,9 @@
   </data>
   <data name="RegistrationDate" xml:space="preserve">
     <value>Registration Date</value>
+  </data>
+  <data name="RegistrationDeadline" xml:space="preserve">
+    <value>Registration deadline</value>
   </data>
   <data name="Street" xml:space="preserve">
     <value>Street</value>

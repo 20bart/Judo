@@ -58,14 +58,13 @@ namespace JudoMVC.Controllers
         {
             //Get current club
             var userService = new UserService();
-            var club = userService.GetCurrentClub();
-
+            
             //Fill landen for dropdown
             var landService = new LandService();
             var landen = landService.FindAll();
             ViewBag.Landen = landen;
 
-            return View(club);
+            return View(userService.GetCurrentClub());
         }
 
         //
@@ -82,7 +81,6 @@ namespace JudoMVC.Controllers
                 //If something changed -> save
                 if (club.ClubNummer != model.ClubNummer || club.Naam != model.Naam || club.Adres != model.Adres || club.Huisnummer != model.Huisnummer || club.Gemeente.Postcode != model.Gemeente.Postcode || club.Gemeente.Plaats != model.Gemeente.Plaats || club.Gemeente.Land.LandId != model.Gemeente.Land.LandId || club.Gemeente.Land.LandNaam != model.Gemeente.Land.LandNaam)
                 {
-                    
                     var clubService = new ClubService();
                     ViewBag.ChangesSaved = clubService.Update(club.ClubId, model.ClubNummer, model.Naam, model.Adres, model.Huisnummer, model.Gemeente.Postcode, model.Gemeente.Plaats, model.Gemeente.Land.LandId, model.Gemeente.Land.LandNaam);
                     //to set landid correct

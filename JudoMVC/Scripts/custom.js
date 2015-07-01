@@ -1,16 +1,13 @@
 ﻿$(document).ready(function () {
     //Dropdownlist Selectedchange event
-    
-    $("#Landen").change(showHideLandNaam);
-
     function showHideLandNaam() {
         
-        var waarde = $('#Landen').val();
+        var waarde = $("#Landen").val();
         
-        if (waarde == -99) {
+        if (waarde === "-99") {
             $("#LandNaam").removeClass("hidden");
-            $("#textBoxLandNaam").val("")
-            $("#LabelLandId").addClass("invisible")
+            $("#textBoxLandNaam").val("");
+            $("#LabelLandId").addClass("invisible");
         }
         else {
             $("#LandNaam").addClass("hidden");
@@ -20,17 +17,13 @@
         }
     }
 
-    $('#reg_next').click(function () {
-        $('#club').addClass("hidden");
-        $('#verantwoordelijke').removeClass("hidden");
-    });
-    $('#reg_prev').click(function () {
-        $('#club').removeClass("hidden");
-        $('#verantwoordelijke').addClass("hidden");
-    });
-
+    if ($("#Landen").length) {
+        $("#Landen").change(showHideLandNaam);
+    }
     //END Dropdownlist Selectedchange even
 
-
-
+    //Hide message after 5 sec
+    if ($(".temp-msg").length) {
+        $(".temp-msg").hide(5000);
+    }
 });

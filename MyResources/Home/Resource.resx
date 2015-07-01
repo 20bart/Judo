@@ -132,6 +132,12 @@
   <data name="ManageParticipants" xml:space="preserve">
     <value>Deelnemers beheren</value>
   </data>
+  <data name="ManageTournaments" xml:space="preserve">
+    <value>Tornooien beheren</value>
+  </data>
+  <data name="ManageTournamentsText" xml:space="preserve">
+    <value>Hier heb je de mogelijkheid om de gegevens van het tornooi in te voeren.</value>
+  </data>
   <data name="ManagingParticipantsText" xml:space="preserve">
     <value>Hier heb je de mogelijkheid om de gegevens van je deelnemers te beheren.</value>
   </data>
@@ -140,6 +146,9 @@
   </data>
   <data name="Participants" xml:space="preserve">
     <value>Deelnemers</value>
+  </data>
+  <data name="Tournaments" xml:space="preserve">
+    <value>Tornooien</value>
   </data>
   <data name="YourAppDescPageText" xml:space="preserve">
     <value>Jouw applicatie beschrijvingspagina.</value>

@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Categorie.cs" />
     <Compile Include="Club.cs" />
     <Compile Include="Deelnemer.cs" />
     <Compile Include="Gemeente.cs" />

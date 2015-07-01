@@ -12,5 +12,9 @@ namespace JudoModelsLibrary
         public DbSet<Land> Land { get; set; }
         public DbSet<Tornooi> Tornooi { get; set; }
         public DbSet<Verantwoordelijke> Verantwoordelijke { get; set; }
+        public DbSet<Categorie> Categorie { get; set; }
+        public DbSet<LeeftijdCategorie> LeeftijdCategorie { get; set; }
+        public DbSet<GewichtCategorie> GewichtCategorie { get; set; }
+        public DbSet<DuurCategorie> DuurCategorie { get; set; }
     }
 }

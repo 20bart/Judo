@@ -67,29 +67,45 @@ namespace JudoServiceLibrary
                     clubToUpdate.Naam = clubnaam;
                     clubToUpdate.Adres = straat;
                     clubToUpdate.Huisnummer = huisnummer;
-                    var gemeenteService = new GemeenteService();
-                    var gemeente = gemeenteService.GetGemeenteByPostcodeAndPlaats(postcode, plaats, landid);
-                    if (gemeente!=null)
+                    var landService = new LandService();
+                    Land land;
+                    var gemeente = new Gemeente();
+                    if(landid == -99) //Add another country chosen
                     {
-                        clubToUpdate.PostcodeId = gemeente.PostcodeId;
-                    }
-                    else
-                    {
-                        var landService = new LandService();
-                        var land = landService.Read(landid);
-                        if (land == null)
+                        //check if land exists
+                        land = landService.GetLandByName(landnaam);
+                        if(land == null)
                         {
-                            land = new Land { LandNaam = landnaam };
-                            clubToUpdate.Gemeente = new Gemeente { Postcode = postcode, Plaats = plaats, Land = land };
+                            //add new country
+                            land = new Land{ LandNaam = landnaam};
+                            gemeente.Land = land;
                         }
                         else
                         {
-                            clubToUpdate.Gemeente = new Gemeente { Postcode = postcode, Plaats = plaats, LandId = landid };
+                            //get landid from existing country
+                            gemeente.LandId = land.LandId;
                         }
-                        
                     }
-                    if (db.SaveChanges() != 0)
-                        return true;
+                    else
+                    {
+                        land = landService.Read(landid);
+                        gemeente.LandId = land.LandId;
+                    }
+
+                    //check if gemeente exists
+                    var gemeenteService = new GemeenteService();
+                    var bestaandeGemeente = gemeenteService.GetGemeenteByPostcodeAndPlaats(postcode, plaats, landid);
+                    if(bestaandeGemeente == null)
+                    {
+                        gemeente.Postcode = postcode;
+                        gemeente.Plaats = plaats;
+                        clubToUpdate.Gemeente = gemeente;
+                    }
+                    else
+                    {
+                        clubToUpdate.PostcodeId = bestaandeGemeente.PostcodeId;
+                    }
+                    return db.SaveChanges() != 0;
                 }
             }
             return false;

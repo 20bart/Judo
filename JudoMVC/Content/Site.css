@@ -36,3 +36,12 @@ body>.navbar-inverse {
 .body-content {
     padding-top: 60px;
 }
+.maxwidth {
+    max-width: 390px;
+}
+.minwidth {
+    min-width: 60px;
+}
+address {
+    margin-left: 10px;
+}
