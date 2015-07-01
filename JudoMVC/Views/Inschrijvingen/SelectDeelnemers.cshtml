@@ -1,0 +1,20 @@
+﻿@using Resource = MyResources.Inschrijvingen.Resource;
+@model List<JudoMVC.Models.DeelnemerCheckedViewModel>
+
+@{
+    ViewBag.Title = Resource.SelectParticipants;
+}
+
+<h2>@Resource.SelectParticipants</h2>
+
+
+<ul class="list-group checked-list-box">
+    @foreach (var deelnemer in Model)
+    {
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading">@deelnemer.Voornaam @deelnemer.Familienaam</h4>
+            <p class="list-group-item-text">@deelnemer.GeboorteJaar @deelnemer.Geslacht</p>
+            @*Checkbox*@ 
+        </li>
+    }
+</ul>
