@@ -1,0 +1,57 @@
+﻿@using System.Security
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/index")
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body id="home">
+@{ var transparency = "";}
+@if (ViewBag.Title == MyResources.Home.Resource.HomePage)
+{
+    transparency = "navbar-transparent";
+}
+<nav class="navbar navbar-inverse navbar-fixed-top @transparency">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink(Resource.JudoTournaments, "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink(Resource.Home, "Index", "Home")</li>
+                <li>@Html.ActionLink(Resource.About, "About", "Home")</li>
+                <li>@Html.ActionLink(Resource.Contact, "Contact", "Home")</li>
+            </ul>
+            @Html.Partial("_LanguageSettingPartial")
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</nav>
+@if (ViewBag.Title == MyResources.Home.Resource.HomePage)
+{
+    <img class="splash img img-responsive" src="~/Content/images/Groepsfoto2.JPG" alt="groepsfoto"/>
+}
+<div class="container body-content">
+    @RenderBody()
+    <hr/>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Judo Tournaments Application</p>
+    </footer>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/jqueryui")
+@RenderSection("scripts", required: false)
+</body>
+</html>

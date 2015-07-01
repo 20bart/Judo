@@ -1,0 +1,82 @@
+﻿@using JudoModelsLibrary
+@using Resource = MyResources.Tornooi.Resource;
+
+@{
+    ViewBag.Title = Resource.ManageTournaments;
+}
+
+<h2>@Resource.ManageTournaments</h2>
+@*Messages*@
+
+@if (ViewBag.Saved != null)
+{
+    <div class="row temp-msg">
+        <div class="col-md-4">
+            <div class="form-group">
+                @if (ViewBag.Saved == 0)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @Resource.TournamentSavedError
+                    </div>
+                }
+                else if (ViewBag.Saved == -1)
+                {
+                    <div class="alert alert-warning" role="alert">
+                        @Resource.NothingChanged
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-success" role="alert">
+                        @Resource.TournamentSaved
+                    </div>
+                }
+                
+            </div>
+        </div>
+    </div>
+}
+
+@*TornooienList*@
+    
+    @if (ViewBag.Tornooien != null)
+    {
+        var tornooien = (List<Tornooi>)ViewBag.Tornooien;
+        <div class="list-group">
+            @foreach (var tornooi in tornooien)
+            {
+                <div class="list-group-item">
+                    <a href="@Url.Action("Verwijder","Tornooi", new {id=tornooi.TornooiId})" class="badge">@Resource.Delete</a>
+                    <a href="@Url.Action("Wijzig","Tornooi", new {id=tornooi.TornooiId})" class="badge">@Resource.Edit</a>
+                    <h4 class="list-group-item-heading"><time>@tornooi.Datum.ToShortDateString()</time> @tornooi.TornooiNaam</h4>
+                    <div class="list-group-item-text" style="margin-left: 10px">
+                        <h4 class="list-group-item-text">@tornooi.PlaatsNaam</h4>
+                        <address>
+                            @tornooi.Adres @tornooi.Huisnummer<br/>
+                            @tornooi.Gemeente.Postcode @tornooi.Gemeente.Plaats<br/>
+                            @tornooi.Gemeente.Land.LandNaam
+                        </address>
+                        
+                        <p class="list-group-item-text"><strong>@Resource.Categories</strong>: 
+                            @{
+                                var categories = tornooi.LeeftijdCategories.Aggregate("", (current, categorie) => current + (@categorie.LeeftijdCategorieNaam + " - "));
+                                if (categories.Length > 3)
+                                {
+                                    categories = categories.Remove(categories.Length - 3);
+                                }
+                            }
+                            @categories
+                        </p>
+                        <p class="list-group-item-text"><strong>@Resource.RegistrationDeadline</strong>: <time>@tornooi.Datum.AddDays(-(tornooi.UitersteInschrijvingVoorAantalDagen)).ToShortDateString()</time></p>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+@*Buttons*@
+@Html.ActionLink(Resource.AddTournament, "Toevoegen", "Tornooi", new { @class = "btn btn-default" })
+
+@section Scripts {
+    @Scripts.Render("~/bundles/custom")
+}

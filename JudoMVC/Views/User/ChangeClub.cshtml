@@ -1,0 +1,91 @@
+﻿@using JudoModelsLibrary
+@using Resource = MyResources.User.Resource
+@model JudoModelsLibrary.Club
+
+@{
+    ViewBag.Title = Resource.ChangeClub;
+}
+
+<h2>@Resource.ChangeClub</h2>
+
+@using (Html.BeginForm("ChangeClub", "User", FormMethod.Post, new { role = "form" }))
+{
+    <h4>@Resource.ChangeClubDetails</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    @Html.Partial("_ChangesSavedPartial")
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                @Html.LabelFor(m => m.ClubNummer, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.ClubNummer, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.ClubNummer) })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Naam, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Naam, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Naam) })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Adres, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Adres, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Adres) })
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Huisnummer, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Huisnummer, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Huisnummer) })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Gemeente.Postcode, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Gemeente.Postcode, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Gemeente.Postcode) })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Gemeente.Plaats, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Gemeente.Plaats, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Gemeente.Plaats) })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Gemeente.Land.LandId, new { @class = "control-label", id = "LabelLandId" })
+                @{var landen = (List<Land>)ViewBag.Landen;
+                landen.Add(new Land { LandId = -99, LandNaam = Resource.AddOtherCountry });}
+                @Html.DropDownListFor(m => m.Gemeente.Land.LandId, new SelectList(landen, "LandId", "LandNaam"), "", new { @class = "form-control", id = "Landen" })
+            </div>
+        </div>
+        <div class="col-md-3 hidden" id="LandNaam">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Gemeente.Land.LandNaam, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Gemeente.Land.LandNaam, new { @class = "form-control", id = "textBoxLandNaam", placeholder = @Html.DisplayNameFor(m => m.Gemeente.Land.LandNaam) })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <input type="submit" class="btn btn-default" value="@Resource.SaveChanges" />
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <input type="button" id="btnCancel" class="btn btn-default" onclick="location.href='@Url.Action("Index", "Manage")';" value="@Resource.Cancel" />
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/custom")
+}

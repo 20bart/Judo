@@ -1,0 +1,122 @@
+﻿@model JudoMVC.Models.TornooiViewModel
+@using JudoModelsLibrary
+@using Resource = MyResources.Tornooi.Resource;
+@using RDP = MyResources.DatePicker.Resource;
+
+@{
+    ViewBag.Title = Resource.ChangeTournament;
+}
+
+<h2>Resource.ChangeTournament</h2>
+
+@using (Html.BeginForm("Wijzig", "Tornooi", FormMethod.Post, new { role = "form" }))
+{
+    <h4>@Resource.ChangeTournamentDetails</h4>
+    <hr />
+
+    @Html.ValidationSummary("", new { @class = "text-danger" })   
+    @Html.HiddenFor(m=>m.TornooiId) 
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.TornooiNaam, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.TornooiNaam, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.TornooiNaam), autofocus = "autofocus" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Datum, new {@class = "control-label"})
+                @{
+                    string[] dayNamesMin = {RDP.Su, RDP.Mo, RDP.Tu, RDP.We, RDP.Th, RDP.Fr, RDP.Sa};
+                    string[] monthNames = {RDP.January, RDP.February, RDP.March, RDP.April, RDP.May, RDP.June, RDP.July, RDP.August, RDP.September, RDP.October, RDP.November, RDP.December};
+                    uint startDayOfWeek = uint.Parse(RDP.StartDayOfWeek);
+                }
+                @Html.JQueryUI().DatepickerFor(m => m.Datum, new {@class = "form-control datepicker", placeholder = @Html.DisplayNameFor(m => m.Datum)}).FirstDay(startDayOfWeek).DayNamesMin(dayNamesMin).MonthNames(monthNames)
+            </div>
+        </div>
+        <div class="col-md-3 maxwidth">
+            <div class="form-group">
+                @Html.LabelFor(m => m.UitersteInschrijvingVoorAantalDagen, new { @class = "control-label" })
+                <div class="input-group">
+                    @Html.EditorFor(m => m.UitersteInschrijvingVoorAantalDagen, new { @htmlAttributes = new { @class = "form-control minwidth" } })
+                    <div class="input-group-addon">@Resource.DaysForTournamentDate</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.PlaatsNaam, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.PlaatsNaam, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.PlaatsNaam), autofocus = "autofocus" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Adres, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Adres, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Adres), autofocus = "autofocus" })
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Huisnummer, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Huisnummer, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Huisnummer), autofocus = "autofocus" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Gemeente.Postcode, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Gemeente.Postcode, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Gemeente.Postcode), autofocus = "autofocus" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Gemeente.Plaats, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Gemeente.Plaats, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Gemeente.Plaats), autofocus = "autofocus" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Gemeente.Land.LandId, new {@class = "control-label", id = "LabelLandId"})
+                @{var landen = (List<Land>) ViewBag.Landen;
+                    landen.Add(new Land {LandId = -99, LandNaam = Resource.AddOtherCountry});}
+                @Html.DropDownListFor(m => m.Gemeente.Land.LandId, new SelectList(landen, "LandId", "LandNaam"), "", new {@class = "form-control", id = "Landen"})
+            </div>
+        </div>
+        <div class="col-md-3 hidden" id="LandNaam">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Gemeente.Land.LandNaam, new {@class = "control-label"})
+                @Html.TextBoxFor(m => m.Gemeente.Land.LandNaam, new {@class = "form-control", id = "textBoxLandNaam", placeholder = @Html.DisplayNameFor(m => m.Gemeente.Land.LandNaam)})
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div clas="form-group">
+                @Html.Label(Resource.AgeCategories)
+                @Html.EditorFor(m => m.AssignedLeeftijdCategories)
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="submit" class="btn btn-default" value="@Resource.SaveChanges"/>
+                <a class="btn btn-default" href="@Url.Action("Index", "Tornooi")">@Resource.Cancel</a>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/custom")
+}
