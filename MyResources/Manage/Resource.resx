@@ -165,8 +165,14 @@
   <data name="Manage" xml:space="preserve">
     <value>Beheer</value>
   </data>
+  <data name="ManageParticipants" xml:space="preserve">
+    <value>Deelnemers beheren</value>
+  </data>
   <data name="Manager" xml:space="preserve">
     <value>Verantwoordelijke</value>
+  </data>
+  <data name="ManageTournaments" xml:space="preserve">
+    <value>Tornooien beheren</value>
   </data>
   <data name="NewEmail" xml:space="preserve">
     <value>Nieuwe Email</value>
@@ -176,6 +182,9 @@
   </data>
   <data name="NewPassword" xml:space="preserve">
     <value>Nieuw wachtwoord</value>
+  </data>
+  <data name="Participants" xml:space="preserve">
+    <value>Deelnemers</value>
   </data>
   <data name="PassChanged" xml:space="preserve">
     <value>Uw wachtwoord is gewijzigd.</value>
@@ -197,6 +206,9 @@
   </data>
   <data name="StringLengthError" xml:space="preserve">
     <value>Het {0} moet minstens {2} karakters lang zijn.</value>
+  </data>
+  <data name="Tournaments" xml:space="preserve">
+    <value>Tornooien</value>
   </data>
   <data name="TwoFactorAuthSet" xml:space="preserve">
     <value>Uw two-factor authenticatie provider is ingesteld.</value>

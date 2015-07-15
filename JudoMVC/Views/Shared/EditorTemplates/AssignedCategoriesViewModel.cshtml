@@ -1,8 +1,45 @@
 ﻿@model AssignedCategoriesViewModel
 @using JudoMVC.Models
+@using Microsoft.Owin.Security.OAuth
+@using Resource = MyResources.Models.Resource;
 
-<div class="checkbox">
+<fieldset class="checkboxen">
     @Html.HiddenFor(m=>m.LeeftijdCategorieId)
-    @Html.CheckBoxFor(m=>m.Assigned)
+    @Html.CheckBoxFor(m=>m.Assigned, new {@class="checkbokske"})
     @Html.DisplayFor(m=>m.LeeftijdCategorieNaam)
-</div>
+    <table class="hidden table">
+        <tr>
+            <td>@Resource.WeightRegistration @Resource.start</td>
+            <td>
+                <div class="input-group date timepicker">
+                    @Html.EditorFor(m => m.StartWeging, new { htmlAttributes = new { @class = "form-control", type = "time" } })
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>@Resource.WeightRegistration @Resource.till</td>
+            <td>
+                <div class="input-group date timepicker">
+                    @Html.EditorFor(m => m.EindeWeging, new { htmlAttributes = new { @class = "form-control", type = "time" } })
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>@Resource.Competition @Resource.start</td>
+            <td>
+                <div class="input-group date timepicker">
+                    @Html.EditorFor(m => m.StartWedstrijden, new { htmlAttributes = new { @class = "form-control", type = "time" } })
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                </div>
+            </td>
+        </tr>
+    </table>
+</fieldset>

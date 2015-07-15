@@ -36,7 +36,7 @@ namespace JudoMVC.Controllers
             var landService = new LandService();
             var landen = landService.FindAll();
             ViewBag.Landen = landen;
-            var tornooiViewModel = new TornooiViewModel(){ AssignedLeeftijdCategories = PopulateLeeftijdsCategoriesData(), Datum = DateTime.Now, UitersteInschrijvingVoorAantalDagen = 7};
+            var tornooiViewModel = new TornooiViewModel { AssignedLeeftijdCategories = PopulateLeeftijdsCategoriesData(), Datum = DateTime.Now, UitersteInschrijvingVoorAantalDagen = 7};
             return View(tornooiViewModel);
         }
 
@@ -45,14 +45,17 @@ namespace JudoMVC.Controllers
             var leeftijdCategoriesService = new  LeeftijdCategorieService();
             var leeftijdcategories = leeftijdCategoriesService.FindAll();
             var assignedLeeftijdCategories = new List<AssignedCategoriesViewModel>();
-
+            var date = new DateTime(DateTime.Now.Year,DateTime.Now.Month, DateTime.Now.Day, 9,0,0);
             foreach (var item in leeftijdcategories)
             {
                 assignedLeeftijdCategories.Add(new AssignedCategoriesViewModel
                 {
                     LeeftijdCategorieId = item.LeeftijdCategorieId,
                     LeeftijdCategorieNaam = item.LeeftijdCategorieNaam,
-                    Assigned = false
+                    Assigned = false,
+                    StartWeging = date,
+                    EindeWeging = date.AddMinutes(30),
+                    StartWedstrijden = date.AddMinutes(60)
                 });
             }
             return assignedLeeftijdCategories;
@@ -106,6 +109,8 @@ namespace JudoMVC.Controllers
                 nieuwTornooi.Huisnummer = tornooiViewModel.Huisnummer;
                 nieuwTornooi.Datum = tornooiViewModel.Datum;
                 nieuwTornooi.UitersteInschrijvingVoorAantalDagen = tornooiViewModel.UitersteInschrijvingVoorAantalDagen;
+                nieuwTornooi.InschrijvingsGeld = tornooiViewModel.InschrijvingsGeld;
+                nieuwTornooi.Opmerkingen = tornooiViewModel.Opmerkingen;
 
                 //Get current club
                 var userService = new UserService();
@@ -127,18 +132,25 @@ namespace JudoMVC.Controllers
             var landen = landService.FindAll();
             ViewBag.Landen = landen;
 
-            return View();
+            return View(tornooiViewModel);
         }
 
         private static void AddOrUpdateCategories(Tornooi nieuwTornooi, ICollection<AssignedCategoriesViewModel> assignedCategories)
         {
+            nieuwTornooi.TornooiLeeftijdCategories = new List<TornooiLeeftijdCategorie>();
             foreach (var assignedCategorie in assignedCategories)
             {
                 if (assignedCategorie.Assigned)
                 {
                     var leeftijdCatService = new LeeftijdCategorieService();
                     var cat = leeftijdCatService.Read(assignedCategorie.LeeftijdCategorieId);
-                    nieuwTornooi.LeeftijdCategories.Add(cat);
+                    nieuwTornooi.TornooiLeeftijdCategories.Add(new TornooiLeeftijdCategorie
+                    {
+                        LeeftijdCategorie = cat,
+                        StartWeging = assignedCategorie.StartWeging,
+                        EindeWeging = assignedCategorie.EindeWeging,
+                        StartWedstrijden = assignedCategorie.StartWedstrijden
+                    });
                 }
             }
         }
@@ -167,6 +179,8 @@ namespace JudoMVC.Controllers
                 Huisnummer = tornooi.Huisnummer,
                 Datum = tornooi.Datum,
                 UitersteInschrijvingVoorAantalDagen = tornooi.UitersteInschrijvingVoorAantalDagen,
+                InschrijvingsGeld = tornooi.InschrijvingsGeld,
+                Opmerkingen = tornooi.Opmerkingen,
                 Gemeente = new Gemeente() { Postcode = tornooi.Gemeente.Postcode, Plaats = tornooi.Gemeente.Plaats, Land = new Land() { LandId = tornooi.Gemeente.Land.LandId, LandNaam = tornooi.Gemeente.Land.LandNaam} }
             };
             
@@ -176,17 +190,29 @@ namespace JudoMVC.Controllers
             var assignedLeeftijdCategories = new List<AssignedCategoriesViewModel>();
             foreach (var item in leeftijdcategories)
             {
-                bool assigned = false;
                 var item1 = item;
-                var cat = tornooi.LeeftijdCategories.Where(m => m.LeeftijdCategorieId == item1.LeeftijdCategorieId);
-                if (cat.Count()!=0)
-                    assigned = true;
-                assignedLeeftijdCategories.Add(new AssignedCategoriesViewModel
+                var cat = tornooi.TornooiLeeftijdCategories.FirstOrDefault(m => m.LeeftijdCategorie.LeeftijdCategorieId == item1.LeeftijdCategorieId);
+                var assignedCat = new AssignedCategoriesViewModel()
                 {
                     LeeftijdCategorieId = item.LeeftijdCategorieId,
-                    LeeftijdCategorieNaam = item.LeeftijdCategorieNaam,
-                    Assigned = assigned
-                });
+                    LeeftijdCategorieNaam = item.LeeftijdCategorieNaam
+                };
+                if (cat != null)
+                {
+                    assignedCat.Assigned = true;
+                    assignedCat.StartWeging = cat.StartWeging;
+                    assignedCat.EindeWeging = cat.EindeWeging;
+                    assignedCat.StartWedstrijden = cat.StartWedstrijden;
+                }
+                else
+                {
+                    var date = new DateTime(DateTime.Now.Year,DateTime.Now.Month, DateTime.Now.Day, 9,0,0);
+                    assignedCat.Assigned = false;
+                    assignedCat.StartWeging = date;
+                    assignedCat.EindeWeging = date.AddMinutes(30);
+                    assignedCat.StartWedstrijden = date.AddMinutes(60);
+                }
+                assignedLeeftijdCategories.Add(assignedCat);
             }
             tornooiViewModel.AssignedLeeftijdCategories = assignedLeeftijdCategories;
 
@@ -210,9 +236,9 @@ namespace JudoMVC.Controllers
                 var nieuwTornooi = new Tornooi();
                 AddOrUpdateCategories(nieuwTornooi, tornooi.AssignedLeeftijdCategories);
                 int save=-1;
-                if (tornooi.TornooiNaam != oudTornooi.TornooiNaam || tornooi.Datum != oudTornooi.Datum || tornooi.PlaatsNaam != oudTornooi.PlaatsNaam || tornooi.Adres != oudTornooi.Adres || tornooi.Huisnummer != oudTornooi.Huisnummer || tornooi.Gemeente.Postcode != oudTornooi.Gemeente.Postcode || tornooi.Gemeente.Plaats != oudTornooi.Gemeente.Plaats || tornooi.Gemeente.Land.LandId != oudTornooi.Gemeente.Land.LandId || tornooi.Gemeente.Land.LandNaam != oudTornooi.Gemeente.Land.LandNaam || !nieuwTornooi.LeeftijdCategories.Equals(oudTornooi.LeeftijdCategories) || tornooi.UitersteInschrijvingVoorAantalDagen != oudTornooi.UitersteInschrijvingVoorAantalDagen)
+                if (tornooi.TornooiNaam != oudTornooi.TornooiNaam || tornooi.Datum != oudTornooi.Datum || tornooi.PlaatsNaam != oudTornooi.PlaatsNaam || tornooi.Adres != oudTornooi.Adres || tornooi.Huisnummer != oudTornooi.Huisnummer || tornooi.Gemeente.Postcode != oudTornooi.Gemeente.Postcode || tornooi.Gemeente.Plaats != oudTornooi.Gemeente.Plaats || tornooi.Gemeente.Land.LandId != oudTornooi.Gemeente.Land.LandId || tornooi.Gemeente.Land.LandNaam != oudTornooi.Gemeente.Land.LandNaam || !nieuwTornooi.TornooiLeeftijdCategories.Equals(oudTornooi.TornooiLeeftijdCategories) || tornooi.UitersteInschrijvingVoorAantalDagen != oudTornooi.UitersteInschrijvingVoorAantalDagen || tornooi.InschrijvingsGeld != oudTornooi.InschrijvingsGeld || tornooi.Opmerkingen != oudTornooi.Opmerkingen)
                 {
-                    save = tornooiService.Update(tornooi.TornooiId, tornooi.TornooiNaam, tornooi.Datum, tornooi.UitersteInschrijvingVoorAantalDagen, tornooi.PlaatsNaam, tornooi.Adres, tornooi.Huisnummer, tornooi.Gemeente.Postcode, tornooi.Gemeente.Plaats, tornooi.Gemeente.Land.LandId, tornooi.Gemeente.Land.LandNaam, tornooi.ClubId, nieuwTornooi.LeeftijdCategories);
+                    save = tornooiService.Update(tornooi.TornooiId, tornooi.TornooiNaam, tornooi.Datum, tornooi.UitersteInschrijvingVoorAantalDagen, tornooi.PlaatsNaam, tornooi.Adres, tornooi.Huisnummer, tornooi.Gemeente.Postcode, tornooi.Gemeente.Plaats, tornooi.Gemeente.Land.LandId, tornooi.Gemeente.Land.LandNaam, tornooi.ClubId, nieuwTornooi.TornooiLeeftijdCategories, tornooi.InschrijvingsGeld, tornooi.Opmerkingen);
                 }
                 return RedirectToAction("Index", new { @saved = save });
             }
@@ -222,6 +248,16 @@ namespace JudoMVC.Controllers
             ViewBag.Landen = landen;
 
             return View();
+        }
+
+        //
+        //GET: Tornooi/Tornooien
+        [AllowAnonymous]
+        public ActionResult Tornooien()
+        {
+            var tornooiService = new TornooiService();
+            var tornooien = tornooiService.GetTornooienNaDatum(DateTime.Now);
+            return View(tornooien);
         }
     }
 }

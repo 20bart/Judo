@@ -61,6 +61,7 @@
     <Compile Include="LandService.cs" />
     <Compile Include="LeeftijdCategorieService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RekeningnummerService.cs" />
     <Compile Include="TornooiService.cs" />
     <Compile Include="VerantwoordelijkeService.cs" />
   </ItemGroup>

@@ -133,6 +133,15 @@ namespace MyResources.Tornooi {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Opmerkingen.
+        /// </summary>
+        public static string Comments {
+            get {
+                return ResourceManager.GetString("Comments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maak een nieuw tornooi aan..
         /// </summary>
         public static string CreateANewTournament {
@@ -192,6 +201,15 @@ namespace MyResources.Tornooi {
         public static string RegistrationDeadline {
             get {
                 return ResourceManager.GetString("RegistrationDeadline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inschrijvingsgeld.
+        /// </summary>
+        public static string RegistrationFee {
+            get {
+                return ResourceManager.GetString("RegistrationFee", resourceCulture);
             }
         }
         

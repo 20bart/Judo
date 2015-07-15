@@ -123,6 +123,9 @@
   <data name="AgeCategory" xml:space="preserve">
     <value>Age Category</value>
   </data>
+  <data name="BIC" xml:space="preserve">
+    <value>BIC</value>
+  </data>
   <data name="BirthYear" xml:space="preserve">
     <value>Geboortejaar</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="ClubNumber" xml:space="preserve">
     <value>Clubnummer</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Opmerkingen</value>
   </data>
   <data name="Country" xml:space="preserve">
     <value>Land</value>
@@ -158,6 +164,9 @@
   </data>
   <data name="Geslacht_Vrouw" xml:space="preserve">
     <value>Vrouw</value>
+  </data>
+  <data name="IBAN" xml:space="preserve">
+    <value>IBAN</value>
   </data>
   <data name="Individually" xml:space="preserve">
     <value>Individueel</value>
@@ -188,6 +197,9 @@
   </data>
   <data name="RegistrationDeadline" xml:space="preserve">
     <value>Uiterste inschrijving</value>
+  </data>
+  <data name="RegistrationFee" xml:space="preserve">
+    <value>Inschrijvingsgeld per deelnemer</value>
   </data>
   <data name="Street" xml:space="preserve">
     <value>Straat</value>

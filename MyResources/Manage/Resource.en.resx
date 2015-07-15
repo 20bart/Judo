@@ -165,8 +165,14 @@
   <data name="Manage" xml:space="preserve">
     <value>Manage</value>
   </data>
+  <data name="ManageParticipants" xml:space="preserve">
+    <value>Manage participants</value>
+  </data>
   <data name="Manager" xml:space="preserve">
     <value>Manager</value>
+  </data>
+  <data name="ManageTournaments" xml:space="preserve">
+    <value>Manage tournaments</value>
   </data>
   <data name="NewEmail" xml:space="preserve">
     <value>New Email</value>
@@ -176,6 +182,9 @@
   </data>
   <data name="NewPassword" xml:space="preserve">
     <value>New password</value>
+  </data>
+  <data name="Participants" xml:space="preserve">
+    <value>Participants</value>
   </data>
   <data name="PassChanged" xml:space="preserve">
     <value>Your password has been changed.</value>
@@ -197,6 +206,9 @@
   </data>
   <data name="StringLengthError" xml:space="preserve">
     <value>The {0} must be at least {2} characters long.</value>
+  </data>
+  <data name="Tournaments" xml:space="preserve">
+    <value>Tournaments</value>
   </data>
   <data name="TwoFactorAuthSet" xml:space="preserve">
     <value>Your two-factor authentication provider has been set.</value>

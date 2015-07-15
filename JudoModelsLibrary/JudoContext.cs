@@ -16,5 +16,6 @@ namespace JudoModelsLibrary
         public DbSet<LeeftijdCategorie> LeeftijdCategorie { get; set; }
         public DbSet<GewichtCategorie> GewichtCategorie { get; set; }
         public DbSet<DuurCategorie> DuurCategorie { get; set; }
+        public DbSet<RekeningNummer> Rekeningnummer { get; set; }
     }
 }

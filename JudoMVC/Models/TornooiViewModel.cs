@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 using JudoModelsLibrary;
 using MyResources.JudoModelsLibrary;
 
@@ -19,8 +16,6 @@ namespace JudoMVC.Models
         public string TornooiNaam { get; set; }
 
         [Required]
-        //[Column(TypeName = "Date")]
-        //[DataType(DataType.DateTime)]
         [Display(ResourceType = typeof(Resource), Name = "Date")]
         public DateTime Datum { get; set; }
 
@@ -41,6 +36,14 @@ namespace JudoMVC.Models
         [StringLength(10)]
         [Display(ResourceType = typeof(Resource), Name = "Number")]
         public string Huisnummer { get; set; }
+
+        [Required]
+        [Display(ResourceType = typeof(Resource), Name = "RegistrationFee")]
+        [DataType(DataType.Currency)]
+        public decimal InschrijvingsGeld { get; set; }
+
+        [Display(ResourceType = typeof(Resource), Name = "Comments")]
+        public string Opmerkingen { get; set; }
 
         public int PostcodeId { get; set; }
 

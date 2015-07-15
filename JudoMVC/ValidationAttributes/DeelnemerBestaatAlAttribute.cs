@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Reflection;
 using JudoModelsLibrary;
 using JudoServiceLibrary;
 
@@ -11,14 +10,14 @@ namespace JudoMVC.ValidationAttributes
     public class DeelnemerBestaatAlAttribute : ValidationAttribute
     {
         
-        public String VoorNaam { get; set; }
-        public String FamilieNaam { get; set; }
-        public String GeboorteJaar { get; set; }
-        public String Geslacht { get; set; }
-        public String ClubId { get; set; }
+        public string VoorNaam { get; set; }
+        public string FamilieNaam { get; set; }
+        public string GeboorteJaar { get; set; }
+        public string Geslacht { get; set; }
+        public string ClubId { get; set; }
 
 
-        public DeelnemerBestaatAlAttribute(String voornaam, String familienaam, String geboortejaar, String geslacht, String clubid)
+        public DeelnemerBestaatAlAttribute(string voornaam, string familienaam, string geboortejaar, string geslacht, string clubid)
         {
             this.VoorNaam = voornaam;
             this.FamilieNaam = familienaam;
@@ -27,10 +26,10 @@ namespace JudoMVC.ValidationAttributes
             this.ClubId = clubid;
         }
 
-        public override Boolean IsValid(Object value)
+        public override bool IsValid(object value)
         {
-            Type objectType = value.GetType();
-            PropertyInfo[] neededProperties =
+            var objectType = value.GetType();
+            var neededProperties =
                 objectType.GetProperties()
                 .Where(propertyInfo => propertyInfo.Name == VoorNaam || propertyInfo.Name == FamilieNaam || propertyInfo.Name == GeboorteJaar || propertyInfo.Name == Geslacht || propertyInfo.Name == ClubId)
                 .ToArray();
@@ -41,15 +40,15 @@ namespace JudoMVC.ValidationAttributes
                 throw new ApplicationException("DeelnemerBestaatAl error on " + objectType.Name);
             }
 
-            Boolean isValid = false;
+            var isValid = false;
 
             var voornaam = Convert.ToString(neededProperties.FirstOrDefault(name => name.Name == "Voornaam").GetValue(value, null));
             var familienaam = Convert.ToString(neededProperties.FirstOrDefault(name => name.Name == "Familienaam").GetValue(value, null));
             var geslacht = (Geslacht)neededProperties.FirstOrDefault(name => name.Name == "Geslacht").GetValue(value, null);
             int geboortejaar;
-            int clubid;
             if (int.TryParse(neededProperties.FirstOrDefault(name => name.Name == "GeboorteJaar").GetValue(value, null).ToString(), out geboortejaar))
             {
+                int clubid;
                 if (int.TryParse(neededProperties.FirstOrDefault(name => name.Name == "ClubId").GetValue(value, null).ToString(), out clubid))
                 {
                     var deelnemerService = new DeelnemerService();

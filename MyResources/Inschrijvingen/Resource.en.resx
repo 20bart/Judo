@@ -120,13 +120,52 @@
   <data name="Categories" xml:space="preserve">
     <value>Categories</value>
   </data>
+  <data name="Club" xml:space="preserve">
+    <value>Club</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="Manager" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="MyParticipants" xml:space="preserve">
+    <value>My participants</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="NoParticipants" xml:space="preserve">
+    <value>No participants</value>
+  </data>
+  <data name="NoParticipantsText" xml:space="preserve">
+    <value>No participants who qualify for this tournament. You can add participants in your account.</value>
+  </data>
+  <data name="Participants" xml:space="preserve">
+    <value>Participants</value>
+  </data>
+  <data name="PaymentInformation" xml:space="preserve">
+    <value>Payment information</value>
+  </data>
   <data name="RegistrationDeadline" xml:space="preserve">
     <value>Registration deadline</value>
+  </data>
+  <data name="RegistrationFee" xml:space="preserve">
+    <value>Registration fee</value>
   </data>
   <data name="SelectParticipants" xml:space="preserve">
     <value>Select Participants</value>
   </data>
+  <data name="SelectParticipantsForThisTournament" xml:space="preserve">
+    <value>Select participants for this tournament</value>
+  </data>
   <data name="SelectTournament" xml:space="preserve">
     <value>Select Tournament</value>
+  </data>
+  <data name="Tournament" xml:space="preserve">
+    <value>Tournament</value>
   </data>
 </root>

@@ -9,11 +9,6 @@ namespace JudoModelsLibrary
     [Table("Tornooien")]
     public class Tornooi
     {
-        public Tornooi()
-        {
-            LeeftijdCategories = new List<LeeftijdCategorie>();
-        }
-
         [Key]
         public int TornooiId { get; set; }
 
@@ -23,8 +18,6 @@ namespace JudoModelsLibrary
         public string TornooiNaam { get; set; }
 
         [Required]
-        //[Column(TypeName = "Date")]
-        //[DataType(DataType.DateTime)]
         [Display(ResourceType = typeof(Resource), Name = "Date")]
         public DateTime Datum { get; set; }
 
@@ -46,6 +39,13 @@ namespace JudoModelsLibrary
         [Display(ResourceType = typeof(Resource), Name = "Number")]
         public string Huisnummer { get; set; }
 
+        [Required]
+        [Display(ResourceType = typeof(Resource), Name = "RegistrationFee")]
+        public decimal InschrijvingsGeld { get; set; }
+
+        [Display(ResourceType = typeof(Resource), Name = "Comments")]
+        public string Opmerkingen { get; set; }
+
         public int PostcodeId { get; set; }
 
         public int ClubId { get; set; }
@@ -56,6 +56,6 @@ namespace JudoModelsLibrary
 
         public virtual ICollection<InschrijvingsFormulier> InschrijvingsFormulieren { get; set; }
 
-        public virtual ICollection<LeeftijdCategorie> LeeftijdCategories { get; set; }
+        public virtual ICollection<TornooiLeeftijdCategorie> TornooiLeeftijdCategories { get; set; }
     }
 }

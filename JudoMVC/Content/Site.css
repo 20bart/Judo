@@ -45,3 +45,13 @@ body>.navbar-inverse {
 address {
     margin-left: 10px;
 }
+.checked-list-box > li:hover {
+    background-color: #ebebeb;
+    cursor: pointer;
+}
+.checked {
+    background-color: #337ab7;
+}
+.checked-list-box .checked:hover {
+    background-color: #286090;
+}

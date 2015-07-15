@@ -1,0 +1,42 @@
+﻿@using Resource = MyResources.Tornooi.Resource
+@model List<JudoModelsLibrary.Tornooi>
+@{
+    ViewBag.Title = "Tornooien";
+}
+
+<h2>Tornooien</h2>
+
+<div class="list-group">
+    @foreach (var tornooi in Model)
+    {
+        <a class="list-group-item" href="#">
+            <h4 class="list-group-item-heading"><time>@tornooi.Datum.ToShortDateString()</time> @tornooi.TornooiNaam</h4>
+            <div class="list-group-item-text" style="margin-left: 10px">
+                <h4 class="list-group-item-text">@tornooi.PlaatsNaam</h4>
+                <address>
+                    @tornooi.Adres @tornooi.Huisnummer<br />
+                    @tornooi.Gemeente.Postcode @tornooi.Gemeente.Plaats<br />
+                    @tornooi.Gemeente.Land.LandNaam
+                </address>
+
+                <p class="list-group-item-text">
+                    <strong>@Resource.Categories</strong>:
+                    @{
+                        var categories = "";
+                        foreach (var tornooiLeeftijdCategorie in tornooi.TornooiLeeftijdCategories)
+                        {
+                            categories += tornooiLeeftijdCategorie.LeeftijdCategorie.LeeftijdCategorieNaam + " - ";
+                        }
+                        if (categories.Length > 3)
+                        {
+                            categories = categories.Remove(categories.Length - 3);
+                        }
+                    }
+                    @categories
+                </p>
+                <p class="list-group-item-text"><strong>@Resource.RegistrationDeadline</strong>: <time>@tornooi.Datum.AddDays(-(tornooi.UitersteInschrijvingVoorAantalDagen)).ToShortDateString()</time></p>
+                <p class="list-group-item-text"><strong>@Resource.RegistrationFee</strong>: @tornooi.InschrijvingsGeld &euro;</p>
+            </div>
+        </a>
+    }
+</div>

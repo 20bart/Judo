@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Core.Objects;
 using System.Linq;
 using JudoModelsLibrary;
 
@@ -16,9 +14,9 @@ namespace JudoServiceLibrary
             {
                 using (var db = new JudoContext())
                 {
-                    foreach (var leeftijdCategory in tornooi.LeeftijdCategories)
+                    foreach (var tornooileeftijdCategory in tornooi.TornooiLeeftijdCategories)
                     {
-                        db.LeeftijdCategorie.Attach(leeftijdCategory);
+                        db.LeeftijdCategorie.Attach(tornooileeftijdCategory.LeeftijdCategorie);
                     }
                     db.Tornooi.Add(tornooi);
                     return db.SaveChanges() == 1;
@@ -31,7 +29,7 @@ namespace JudoServiceLibrary
         {
             using (var db = new JudoContext())
             {
-                return (from tornooi in db.Tornooi.Include("Gemeente").Include("Gemeente.Land").Include("LeeftijdCategories")
+                return (from tornooi in db.Tornooi.Include("Gemeente").Include("Gemeente.Land").Include("TornooiLeeftijdCategories").Include("TornooiLeeftijdCategories.LeeftijdCategorie")
                         where tornooi.ClubId == clubid
                         orderby tornooi.Datum
                         select tornooi).ToList();
@@ -63,19 +61,19 @@ namespace JudoServiceLibrary
         {
             using (var db = new JudoContext())
             {
-                return (from tornooi in db.Tornooi.Include("Gemeente").Include("Gemeente.Land").Include("LeeftijdCategories")
+                return (from tornooi in db.Tornooi.Include("Gemeente").Include("Gemeente.Land").Include("TornooiLeeftijdCategories").Include("TornooiLeeftijdCategories.LeeftijdCategorie")
                         where tornooi.TornooiId == id
                         select tornooi).FirstOrDefault();
             }
         }
 
-        public int Update(int id, string tornooiNaam, DateTime datum, int uitersteInschrijving, string plaatsnaam, string adres, string huisnummer, string postcode, string plaats, int landid, string landnaam, int clubid, ICollection<LeeftijdCategorie> leeftijdCategories )
+        public int Update(int id, string tornooiNaam, DateTime datum, int uitersteInschrijving, string plaatsnaam, string adres, string huisnummer, string postcode, string plaats, int landid, string landnaam, int clubid, ICollection<TornooiLeeftijdCategorie> tornooiLeeftijdCategories, decimal inschrijvingsgeld, string opmerkingen )
         {
-            if (tornooiNaam != null && plaatsnaam != null && adres != null && huisnummer != null && postcode != null && plaats != null && landnaam != null && leeftijdCategories != null)
+            if (tornooiNaam != null && plaatsnaam != null && adres != null && huisnummer != null && postcode != null && plaats != null && landnaam != null && tornooiLeeftijdCategories != null && opmerkingen != null)
             {
                 using (var db = new JudoContext())
                 {
-                    var tornooiToUpdate = (from tornooi in db.Tornooi.Include("Gemeente").Include("LeeftijdCategories")
+                    var tornooiToUpdate = (from tornooi in db.Tornooi.Include("Gemeente").Include("Gemeente.Land").Include("TornooiLeeftijdCategories").Include("TornooiLeeftijdCategories.LeeftijdCategorie")
                                            where tornooi.TornooiId == id
                                            select tornooi).FirstOrDefault();
                     if (tornooiToUpdate != null)
@@ -86,7 +84,9 @@ namespace JudoServiceLibrary
                         tornooiToUpdate.Adres = adres;
                         tornooiToUpdate.Huisnummer = huisnummer;
                         tornooiToUpdate.UitersteInschrijvingVoorAantalDagen = uitersteInschrijving;
-                        
+                        tornooiToUpdate.InschrijvingsGeld = inschrijvingsgeld;
+                        tornooiToUpdate.Opmerkingen = opmerkingen;
+
                         var landService = new LandService();
                         Land land;
                         var gemeente = new Gemeente();
@@ -127,17 +127,23 @@ namespace JudoServiceLibrary
                         }
 
                         //Update LeeftijdCategories
-                        for (int i = 0; i < tornooiToUpdate.LeeftijdCategories.Count; i++)
+                        for (int i = 0; i < tornooiToUpdate.TornooiLeeftijdCategories.Count; i++)
                         {
-                            var element = tornooiToUpdate.LeeftijdCategories.ElementAt(i);
-                            tornooiToUpdate.LeeftijdCategories.Remove(element);
+                            var element = tornooiToUpdate.TornooiLeeftijdCategories.ElementAt(i);
+                            tornooiToUpdate.TornooiLeeftijdCategories.Remove(element);
                             i--;
                         }
 
-                        for (int i = 0; i < leeftijdCategories.Count; i++)
+                        for (int i = 0; i < tornooiLeeftijdCategories.Count; i++)
                         {
-                            var cat = db.LeeftijdCategorie.Find(leeftijdCategories.ElementAt(i).LeeftijdCategorieId);
-                            tornooiToUpdate.LeeftijdCategories.Add(cat);
+                            var cat = db.LeeftijdCategorie.Find(tornooiLeeftijdCategories.ElementAt(i).LeeftijdCategorie.LeeftijdCategorieId);
+                            tornooiToUpdate.TornooiLeeftijdCategories.Add(new TornooiLeeftijdCategorie
+                            {
+                                LeeftijdCategorie = cat,
+                                StartWeging = tornooiLeeftijdCategories.ElementAt(i).StartWeging,
+                                EindeWeging= tornooiLeeftijdCategories.ElementAt(i).EindeWeging,
+                                StartWedstrijden = tornooiLeeftijdCategories.ElementAt(i).StartWedstrijden
+                            });
                         }
                     }
                     
@@ -151,8 +157,8 @@ namespace JudoServiceLibrary
         {
             using (var db = new JudoContext())
             {
-                return (from tornooi in db.Tornooi.Include("Gemeente").Include("Gemeente.Land").Include("LeeftijdCategories")
-                    where System.Data.Entity.DbFunctions.AddDays(tornooi.Datum, -tornooi.UitersteInschrijvingVoorAantalDagen) >= datum
+                return (from tornooi in db.Tornooi.Include("Gemeente").Include("Gemeente.Land").Include("TornooiLeeftijdCategories").Include("TornooiLeeftijdCategories.LeeftijdCategorie")
+                    where DbFunctions.AddDays(tornooi.Datum, -tornooi.UitersteInschrijvingVoorAantalDagen) >= datum
                     select tornooi).ToList();
             }
         }

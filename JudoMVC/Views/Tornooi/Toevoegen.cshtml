@@ -1,8 +1,11 @@
 ﻿@using JudoModelsLibrary
+@using JudoMVC.Helper
 @using JudoMVC.Models
 @using Resource = MyResources.Tornooi.Resource;
 @using RDP = MyResources.DatePicker.Resource;
 @model TornooiViewModel
+
+@Styles.Render("~/Content/datetimepicker")
 
 @{
     ViewBag.Title = Resource.AddTournament;
@@ -33,7 +36,7 @@
                     string[] monthNames = {RDP.January, RDP.February, RDP.March, RDP.April, RDP.May, RDP.June, RDP.July, RDP.August, RDP.September, RDP.October, RDP.November, RDP.December};
                     uint startDayOfWeek = uint.Parse(RDP.StartDayOfWeek);
                 }
-                @Html.JQueryUI().DatepickerFor(m => m.Datum, new {@class = "form-control datepicker", placeholder = @Html.DisplayNameFor(m => m.Datum)}).FirstDay(startDayOfWeek).DayNamesMin(dayNamesMin).MonthNames(monthNames).MinDate(0).DefaultDate(0)
+                @Html.JQueryUI().DatepickerFor(m => m.Datum, new {@class = "form-control datepicker", placeholder = @Html.DisplayNameFor(m => m.Datum), type="date"}).FirstDay(startDayOfWeek).DayNamesMin(dayNamesMin).MonthNames(monthNames).MinDate(0).DefaultDate(0)
             </div>
         </div>
         <div class="col-md-3 maxwidth">
@@ -100,9 +103,25 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div clas="form-group">
+            <div class="form-group">
                 @Html.Label(Resource.AgeCategories)
-                @Html.EditorFor(m => m.AssignedLeeftijdCategories, new{@class="form-control"})
+                @Html.EditorFor(m => m.AssignedLeeftijdCategories, new {@class = "form-control"})
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.InschrijvingsGeld, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.InschrijvingsGeld, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.InschrijvingsGeld) })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Opmerkingen, new {@class = "control-label"})
+                @Html.TextAreaFor(m => m.Opmerkingen, new {@class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Opmerkingen), style="height: 100px"})
             </div>
         </div>
     </div>
@@ -114,7 +133,17 @@
         </div>
     </div>
 }
+
+<div class="hidden">
+    @{ var culture = CultureHelper.GetCurrentCulture();}
+    <label id="culture">@culture</label>
+</div>
+
+
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/datetimepicker")
     @Scripts.Render("~/bundles/custom")
 }

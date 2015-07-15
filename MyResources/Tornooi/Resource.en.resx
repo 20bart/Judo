@@ -141,6 +141,9 @@
   <data name="ChangeTournamentDetails" xml:space="preserve">
     <value>Change tournament details</value>
   </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
   <data name="CreateANewTournament" xml:space="preserve">
     <value>Create a new tournament</value>
   </data>
@@ -161,6 +164,9 @@
   </data>
   <data name="RegistrationDeadline" xml:space="preserve">
     <value>Registration deadline</value>
+  </data>
+  <data name="RegistrationFee" xml:space="preserve">
+    <value>Registration fee</value>
   </data>
   <data name="SaveChanges" xml:space="preserve">
     <value>Save changes</value>

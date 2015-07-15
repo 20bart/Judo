@@ -19,11 +19,14 @@
                     @tornooi.Gemeente.Postcode @tornooi.Gemeente.Plaats<br />
                     @tornooi.Gemeente.Land.LandNaam
                 </address>
-
                 <p class="list-group-item-text">
                     <strong>@Resource.Categories</strong>:
                     @{
-                        var categories = tornooi.LeeftijdCategories.Aggregate("", (current, categorie) => current + (@categorie.LeeftijdCategorieNaam + " - "));
+                        var categories = "";
+                        foreach (var tornooiLeeftijdCategorie in tornooi.TornooiLeeftijdCategories)
+                        {
+                            categories += tornooiLeeftijdCategorie.LeeftijdCategorie.LeeftijdCategorieNaam + " - ";
+                        }
                         if (categories.Length > 3)
                         {
                             categories = categories.Remove(categories.Length - 3);
@@ -32,6 +35,7 @@
                     @categories
                 </p>
                 <p class="list-group-item-text"><strong>@Resource.RegistrationDeadline</strong>: <time>@tornooi.Datum.AddDays(-(tornooi.UitersteInschrijvingVoorAantalDagen)).ToShortDateString()</time></p>
+                <p class="list-group-item-text"><strong>@Resource.RegistrationFee</strong>: @tornooi.InschrijvingsGeld &euro;</p>
             </div>
         </a>
     }

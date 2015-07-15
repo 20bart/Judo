@@ -33,7 +33,10 @@ namespace JudoModelsLibrary
         public int PostcodeId { get; set; }
 
         public int VerantwoordelijkeId { get; set; }
+        
+        public int? RekeningNummerId { get; set; }
 
+        public virtual RekeningNummer RekeningNummer { get; set; }
         
         public virtual Gemeente Gemeente { get; set; }
 

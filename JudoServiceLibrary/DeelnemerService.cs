@@ -97,6 +97,20 @@ namespace JudoServiceLibrary
             }
         }
 
+        public List<Deelnemer> GetDeelnemersFromClubBetweenYears(int clubid, int youngestYear, int oldestYear)
+        {
+            using (var db = new JudoContext())
+            {
+                return (from deelnemer in db.Deelnemer
+                    where
+                        deelnemer.ClubId == clubid && 
+                        deelnemer.GeboorteJaar <= youngestYear &&
+                        deelnemer.GeboorteJaar >= oldestYear
+                    orderby deelnemer.GeboorteJaar descending , deelnemer.Voornaam, deelnemer.Familienaam
+                    select deelnemer).ToList();
+            }
+        } 
+
         public void Delete(int id)
         {
             using (var db = new JudoContext())

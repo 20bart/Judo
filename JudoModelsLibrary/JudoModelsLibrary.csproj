@@ -63,7 +63,9 @@
     <Compile Include="JudoContext.cs" />
     <Compile Include="Land.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RekeningNummer.cs" />
     <Compile Include="Tornooi.cs" />
+    <Compile Include="TornooiLeeftijdCategorie.cs" />
     <Compile Include="Verantwoordelijke.cs" />
   </ItemGroup>
   <ItemGroup>

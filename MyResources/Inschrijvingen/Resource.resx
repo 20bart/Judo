@@ -120,13 +120,52 @@
   <data name="Categories" xml:space="preserve">
     <value>Categorieën</value>
   </data>
+  <data name="Club" xml:space="preserve">
+    <value>Club</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Bevestig</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Bevestigen</value>
+  </data>
+  <data name="Manager" xml:space="preserve">
+    <value>Verantwoordelijke</value>
+  </data>
+  <data name="MyParticipants" xml:space="preserve">
+    <value>Mijn deelnemers</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Volgende</value>
+  </data>
+  <data name="NoParticipants" xml:space="preserve">
+    <value>Geen deelnemers</value>
+  </data>
+  <data name="NoParticipantsText" xml:space="preserve">
+    <value>Geen deelnemers die in aanmerking komen voor dit tornooi. U kan deelnemers toevoegen in uw account.</value>
+  </data>
+  <data name="Participants" xml:space="preserve">
+    <value>Deelnemers</value>
+  </data>
+  <data name="PaymentInformation" xml:space="preserve">
+    <value>Betalingsinformatie</value>
+  </data>
   <data name="RegistrationDeadline" xml:space="preserve">
     <value>Uiterste inschrijving</value>
+  </data>
+  <data name="RegistrationFee" xml:space="preserve">
+    <value>Inschrijvingsgeld</value>
   </data>
   <data name="SelectParticipants" xml:space="preserve">
     <value>Selecteer Deelnemers</value>
   </data>
+  <data name="SelectParticipantsForThisTournament" xml:space="preserve">
+    <value>Selecteer deelnemers voor dit tornooi</value>
+  </data>
   <data name="SelectTournament" xml:space="preserve">
     <value>Selecteer Tornooi</value>
+  </data>
+  <data name="Tournament" xml:space="preserve">
+    <value>Tornooi</value>
   </data>
 </root>

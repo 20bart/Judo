@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Net.Configuration;
-using System.Xml.Linq;
 using MyResources.JudoModelsLibrary;
 
 namespace JudoModelsLibrary
@@ -53,7 +51,7 @@ namespace JudoModelsLibrary
         [Display(ResourceType = typeof(Resource), Name = "Age")]
         public int LeeftijdEinde { get; set; }
 
-        public virtual ICollection<Tornooi> Tornooien { get; set; }
+        public virtual ICollection<TornooiLeeftijdCategorie> TornooiLeeftijdCategories { get; set; }
     }
 
     [Table("GewichtCategorie")]

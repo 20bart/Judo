@@ -1,13 +1,15 @@
 ﻿@model JudoMVC.Models.TornooiViewModel
 @using JudoModelsLibrary
+@using JudoMVC.Helper
 @using Resource = MyResources.Tornooi.Resource;
 @using RDP = MyResources.DatePicker.Resource;
 
+@Styles.Render("~/Content/datetimepicker")
 @{
     ViewBag.Title = Resource.ChangeTournament;
 }
 
-<h2>Resource.ChangeTournament</h2>
+<h2>@Resource.ChangeTournament</h2>
 
 @using (Html.BeginForm("Wijzig", "Tornooi", FormMethod.Post, new { role = "form" }))
 {
@@ -101,9 +103,25 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div clas="form-group">
+            <div class="form-group">
                 @Html.Label(Resource.AgeCategories)
-                @Html.EditorFor(m => m.AssignedLeeftijdCategories)
+                @Html.EditorFor(m => m.AssignedLeeftijdCategories, new {@class = "form-control"})
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.InschrijvingsGeld, new {@class = "control-label"})
+                @Html.TextBoxFor(m => m.InschrijvingsGeld, new {@class = "form-control", placeholder = @Html.DisplayNameFor(m => m.InschrijvingsGeld)})
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Opmerkingen, new { @class = "control-label" })
+                @Html.TextAreaFor(m => m.Opmerkingen, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Opmerkingen), style = "height: 100px" })
             </div>
         </div>
     </div>
@@ -116,7 +134,14 @@
         </div>
     </div>
 }
+
+<div class="hidden">
+    @{ var culture = CultureHelper.GetCurrentCulture();}
+    <label id="culture">@culture</label>
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/datetimepicker")
     @Scripts.Render("~/bundles/custom")
 }

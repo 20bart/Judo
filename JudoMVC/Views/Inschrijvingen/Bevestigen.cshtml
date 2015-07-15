@@ -1,0 +1,104 @@
+﻿@using JudoModelsLibrary
+@using Resource = MyResources.Inschrijvingen.Resource
+@model List<Deelnemer>
+
+
+@{
+    ViewBag.Title = Resource.Confirmation;
+}
+
+<h2>@Resource.Confirmation</h2>
+
+@*Tornooi*@
+@{
+    var tornooi = Session["tornooi"] as Tornooi;
+    if (tornooi != null)
+    {
+        <section class="Jumbotron">
+            <h4>@Resource.Tournament</h4>
+            <p><time>@tornooi.Datum.ToShortDateString()</time> @tornooi.TornooiNaam</p>
+            <div style="margin-left: 10px; font-size: 12px">
+                <p>@tornooi.PlaatsNaam</p>
+                    <address>
+                        @tornooi.Adres @tornooi.Huisnummer<br/>
+                        @tornooi.Gemeente.Postcode @tornooi.Gemeente.Plaats<br/>
+                        @tornooi.Gemeente.Land.LandNaam
+                    </address>
+                <p>
+                    <strong>@Resource.Categories</strong>:
+                    @{
+                        var categories = "";
+                        foreach (var tornooiLeeftijdCategorie in tornooi.TornooiLeeftijdCategories)
+                        {
+                            categories += tornooiLeeftijdCategorie.LeeftijdCategorie.LeeftijdCategorieNaam + " - ";
+                        }
+                        if (categories.Length > 3)
+                        {
+                            categories = categories.Remove(categories.Length - 3);
+                        }
+                    }
+                    @categories
+                </p>
+                <p><strong>@Resource.RegistrationDeadline</strong>: <time>@tornooi.Datum.AddDays(-(tornooi.UitersteInschrijvingVoorAantalDagen)).ToShortDateString()</time></p>
+                <p><strong>@Resource.RegistrationFee</strong>: @tornooi.InschrijvingsGeld &euro;</p>
+            </div>
+        </section>
+    }
+}
+
+@*Club*@
+@{
+    var club = (Club)ViewBag.Club;
+    <section>
+        <h4>@Resource.Club</h4>
+        @club.ClubNummer @club.Naam<br/>
+        @club.Adres @club.Huisnummer<br/>
+        @club.Gemeente.Postcode @club.Gemeente.Plaats<br/>
+        @club.Gemeente.Land.LandNaam<br/>
+    </section>
+}
+
+@*Verantwoordelijke*@
+@{
+    var verantw = (Verantwoordelijke)ViewBag.Verantwoordelijke;
+    <section>
+        <h4>@Resource.Manager</h4>
+        @verantw.Voornaam @verantw.Familienaam<br/>
+        @verantw.Email<br/>
+        @verantw.Telefoonnummer<br/>
+    </section>
+}
+
+@*Deelnemers*@
+@using (Html.BeginForm("Bevestigen", "Inschrijvingen", FormMethod.Post, new { @role = "form" }))
+{
+    <section>
+        <h4>@Resource.Participants</h4>
+        <ul class="list-group">
+            @{ var aantalDeelnemers = Model.Count;}
+            @for (int i = 0; i < aantalDeelnemers; i++)
+            {
+                <li class="list-group-item">
+                    @Html.HiddenFor(m => m[i].DeelnemersId)
+                    <h4 class="list-group-item-heading">@Model[i].Voornaam @Model[i].Familienaam</h4>
+                    <p class="list-group-item-text">@Model[i].GeboorteJaar @Model[i].Geslacht</p>
+                </li>
+            }
+        </ul>
+    </section>
+    <section>
+        @{ var teBetalen = aantalDeelnemers*tornooi.InschrijvingsGeld;}
+        <h4>@Resource.PaymentInformation</h4>
+        @*******************************************
+            Hier komt nog de info voor te betalen!!
+            Rekeningnummer, iban, bedrag
+            En nog een checkbox voor bevestiging!!
+        *******************************************@
+    </section>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Bevestigen" />
+        </div>
+    </div>
+    
+}

@@ -79,6 +79,15 @@ namespace MyResources.JudoModelsLibrary {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BIC.
+        /// </summary>
+        public static string BIC {
+            get {
+                return ResourceManager.GetString("BIC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Geboortejaar.
         /// </summary>
         public static string BirthYear {
@@ -111,6 +120,15 @@ namespace MyResources.JudoModelsLibrary {
         public static string ClubNumber {
             get {
                 return ResourceManager.GetString("ClubNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opmerkingen.
+        /// </summary>
+        public static string Comments {
+            get {
+                return ResourceManager.GetString("Comments", resourceCulture);
             }
         }
         
@@ -183,6 +201,15 @@ namespace MyResources.JudoModelsLibrary {
         public static string Geslacht_Vrouw {
             get {
                 return ResourceManager.GetString("Geslacht_Vrouw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IBAN.
+        /// </summary>
+        public static string IBAN {
+            get {
+                return ResourceManager.GetString("IBAN", resourceCulture);
             }
         }
         
@@ -273,6 +300,15 @@ namespace MyResources.JudoModelsLibrary {
         public static string RegistrationDeadline {
             get {
                 return ResourceManager.GetString("RegistrationDeadline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inschrijvingsgeld per deelnemer.
+        /// </summary>
+        public static string RegistrationFee {
+            get {
+                return ResourceManager.GetString("RegistrationFee", resourceCulture);
             }
         }
         

@@ -135,11 +135,14 @@
   <data name="ManageTournaments" xml:space="preserve">
     <value>Tornooien beheren</value>
   </data>
-  <data name="ManageTournamentsText" xml:space="preserve">
-    <value>Hier heb je de mogelijkheid om de gegevens van het tornooi in te voeren.</value>
-  </data>
   <data name="ManagingParticipantsText" xml:space="preserve">
     <value>Hier heb je de mogelijkheid om de gegevens van je deelnemers te beheren.</value>
+  </data>
+  <data name="MyAccount" xml:space="preserve">
+    <value>Mijn Account</value>
+  </data>
+  <data name="MyAccountText" xml:space="preserve">
+    <value>Hier kan u uw account gegevens beheren, maar ook deelnemers en tornooien toevoegen. U kan ook naar uw account gaan door op u naam te klikken.</value>
   </data>
   <data name="Participant" xml:space="preserve">
     <value>Deelnemer</value>
@@ -147,8 +150,20 @@
   <data name="Participants" xml:space="preserve">
     <value>Deelnemers</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Inschrijven</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Inschrijvingen</value>
+  </data>
+  <data name="RegistrationText" xml:space="preserve">
+    <value>Hier heb je de mogelijkheid om uw deelnemers in te schrijven voor een tornooi.</value>
+  </data>
   <data name="Tournaments" xml:space="preserve">
     <value>Tornooien</value>
+  </data>
+  <data name="TournamentsText" xml:space="preserve">
+    <value>Hier heb je de mogelijkheid om alle aankomende tornooien te zien</value>
   </data>
   <data name="YourAppDescPageText" xml:space="preserve">
     <value>Jouw applicatie beschrijvingspagina.</value>

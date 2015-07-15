@@ -5,21 +5,24 @@
 
 <div class="row">
     <div class="col-md-4">
-        <h2>@Resource.ManageParticipants</h2>
-        <p>@Resource.ManagingParticipantsText</p>
-        <p><a class="btn btn-default" href="@Url.Action("DeelnemersBeheren", "Deelnemer")">@Resource.Participants &raquo;</a>
+        <h2>@Resource.MyAccount</h2>
+        <p>@Resource.MyAccountText</p>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Index", "Manage")">@Resource.MyAccount &raquo;</a>
         </p>
     </div>
     <div class="col-md-4">
-        <h2>Lorum ipsum</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel dignissim ante, ornare tristique sapien. Vestibulum eleifend sed diam non.</p>
-        <p><a class="btn btn-default" href="#">Learn more &raquo;</a>
+        <h2>@Resource.Tournaments</h2>
+        <p>@Resource.TournamentsText</p>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Tornooien", "Tornooi")">@Resource.Tournaments &raquo;</a>
         </p>
     </div>
     <div class="col-md-4">
-        <h2>@Resource.ManageTournaments</h2>
-        <p>@Resource.ManageTournamentsText</p>
-        <p><a class="btn btn-default" href="@Url.Action("Index","Tornooi")">@Resource.Tournaments &raquo;</a>
+        <h2>@Resource.Registration</h2>
+        <p>@Resource.RegistrationText</p>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("SelectTornooi", "Inschrijvingen")">@Resource.Register &raquo;</a>
         </p>
     </div>
 </div>

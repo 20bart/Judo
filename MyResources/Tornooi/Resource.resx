@@ -141,6 +141,9 @@
   <data name="ChangeTournamentDetails" xml:space="preserve">
     <value>Wijzig de gegevens van het tornooi</value>
   </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Opmerkingen</value>
+  </data>
   <data name="CreateANewTournament" xml:space="preserve">
     <value>Maak een nieuw tornooi aan.</value>
   </data>
@@ -161,6 +164,9 @@
   </data>
   <data name="RegistrationDeadline" xml:space="preserve">
     <value>Uiterste inschrijving</value>
+  </data>
+  <data name="RegistrationFee" xml:space="preserve">
+    <value>Inschrijvingsgeld</value>
   </data>
   <data name="SaveChanges" xml:space="preserve">
     <value>Wijzigingen opslaan</value>

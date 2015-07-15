@@ -70,11 +70,110 @@ namespace MyResources.Inschrijvingen {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Club.
+        /// </summary>
+        public static string Club {
+            get {
+                return ResourceManager.GetString("Club", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bevestig.
+        /// </summary>
+        public static string Confirm {
+            get {
+                return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bevestigen.
+        /// </summary>
+        public static string Confirmation {
+            get {
+                return ResourceManager.GetString("Confirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verantwoordelijke.
+        /// </summary>
+        public static string Manager {
+            get {
+                return ResourceManager.GetString("Manager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mijn deelnemers.
+        /// </summary>
+        public static string MyParticipants {
+            get {
+                return ResourceManager.GetString("MyParticipants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volgende.
+        /// </summary>
+        public static string Next {
+            get {
+                return ResourceManager.GetString("Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geen deelnemers.
+        /// </summary>
+        public static string NoParticipants {
+            get {
+                return ResourceManager.GetString("NoParticipants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geen deelnemers die in aanmerking komen voor dit tornooi. U kan deelnemers toevoegen in uw account..
+        /// </summary>
+        public static string NoParticipantsText {
+            get {
+                return ResourceManager.GetString("NoParticipantsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deelnemers.
+        /// </summary>
+        public static string Participants {
+            get {
+                return ResourceManager.GetString("Participants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Betalingsinformatie.
+        /// </summary>
+        public static string PaymentInformation {
+            get {
+                return ResourceManager.GetString("PaymentInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Uiterste inschrijving.
         /// </summary>
         public static string RegistrationDeadline {
             get {
                 return ResourceManager.GetString("RegistrationDeadline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inschrijvingsgeld.
+        /// </summary>
+        public static string RegistrationFee {
+            get {
+                return ResourceManager.GetString("RegistrationFee", resourceCulture);
             }
         }
         
@@ -88,11 +187,29 @@ namespace MyResources.Inschrijvingen {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Selecteer deelnemers voor dit tornooi.
+        /// </summary>
+        public static string SelectParticipantsForThisTournament {
+            get {
+                return ResourceManager.GetString("SelectParticipantsForThisTournament", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selecteer Tornooi.
         /// </summary>
         public static string SelectTournament {
             get {
                 return ResourceManager.GetString("SelectTournament", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tornooi.
+        /// </summary>
+        public static string Tournament {
+            get {
+                return ResourceManager.GetString("Tournament", resourceCulture);
             }
         }
     }

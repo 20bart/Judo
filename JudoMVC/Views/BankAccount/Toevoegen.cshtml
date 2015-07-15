@@ -1,0 +1,43 @@
+﻿@model JudoMVC.Models.RekeningnummerViewModel
+@using Resource = MyResources.BankAccount.Resource
+
+@{
+    ViewBag.Title = Resource.BankAccount;
+}
+
+<h2>@Resource.BankAccount</h2>
+
+@using (Html.BeginForm("Toevoegen", "BankAccount", FormMethod.Post, new { @role = "form" }))
+{
+    <h4>@Resource.AddBankAccount</h4>
+    <hr/>
+    
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.IBAN, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.IBAN, new { @class = "form-control", id="IBAN", placeholder = @Html.DisplayNameFor(m => m.IBAN), autofocus = "autofocus" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.BIC, new {@class = "control-label"})
+                @Html.TextBoxFor(m => m.BIC, new {@class = "form-control", id="BIC", placeholder = @Html.DisplayNameFor(m => m.BIC)})
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <input type="submit" id="add" class="btn btn-default" value="@Resource.Add" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

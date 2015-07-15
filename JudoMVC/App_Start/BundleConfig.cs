@@ -34,6 +34,15 @@ namespace JudoMVC
             bundles.Add(new ScriptBundle("~/bundles/datepicker").Include(
                         "~/Scripts/bootstrap-datepicker.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/datetimepicker").Include(
+                        "~/Scripts/bootstrap-datetimepicker.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/moment").Include(
+                        "~/Scripts/moment-with-locales.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/checkboxList").Include(
+                        "~/Scripts/checkboxList.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                 "~/Scripts/jquery-ui-{version}.js",
                 "~/Scripts/jquery-ui.unobtrusive-{version}.js"));
@@ -42,11 +51,14 @@ namespace JudoMVC
             //=================STYLES========================================================
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                        "~/Content/bootstrap.css",
-                        "~/Content/Site.css"));
+                "~/Content/bootstrap.css",
+                "~/Content/Site.css"));
 
             bundles.Add(new StyleBundle("~/Content/datepicker").Include(
                         "~/Content/datepicker.css"));
+
+            bundles.Add(new StyleBundle("~/Content/datetimepicker").Include(
+                        "~/Content/bootstrap-datetimepicker.css"));
 
             bundles.Add(new StyleBundle("~/Content/index").Include(
                         "~/Content/custom.min.css"));
